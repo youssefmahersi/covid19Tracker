@@ -1,0 +1,28 @@
+
+.Container{
+    width: 75%;
+    display: block;
+    margin:10px auto;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    padding : 10px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.Container h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 5px;
+    width: fit-content;
+    border-bottom: #fcba03 2px solid;
+    text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+    .Container{
+        width: 100%;
+    }
+}
