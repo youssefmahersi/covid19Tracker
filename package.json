@@ -15,6 +15,7 @@
     "chart.js": "^2.9.3",
     "gatsby": "^2.20.2",
     "react": "^16.13.1",
+    "react-adsense": "^0.1.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
