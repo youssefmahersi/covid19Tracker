@@ -11,7 +11,7 @@ class Faq extends Component{
     }
     componentDidMount(){
         this.setState({loading : true})
-              fetch("http://covid19-news.herokuapp.com/api/covid19/faqs",{
+              fetch("https://covid19-news.herokuapp.com/api/covid19/faqs",{
                   method :"GET"
               }
               ).then(res =>{
