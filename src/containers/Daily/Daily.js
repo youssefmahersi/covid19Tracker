@@ -4,7 +4,7 @@ import Chart from '../../components/Chart/Chart';
 import Spinner from "../../components/Spinner/Spinner";
 class Daily extends Component{
     state={
-        title: "Most infected countries today",
+        title: "Most infected countries",
           chartData:{
             labels: null,
             datasets: [{ 
@@ -58,8 +58,8 @@ componentDidMount(){
                let permut = false;
                do{
                 let z= null;
-                 for(let i =0; i<newdata.length-1;i++){
-                   if(newdata[i+1].todayCases >newdata[i].todayCases && newdata[i+1].todayDeaths >newdata[i].todayDeaths){
+                 for(let i =0; i>newdata.length-1;i++){
+                   if(newdata[i+1].todayCases >newdata[i].todayCases ){
                      z = newdata[i];
                      newdata[i] = newdata[i+1];
                      newdata[i+1] = z;
@@ -68,8 +68,8 @@ componentDidMount(){
                  }
                }
                while(!permut);
+               console.log(newdata)
                let a= newdata.slice(0,5);
-               console.log(a)
                
               for(let i=0; i<a.length;i++){
                 updatedState.labels.push(a[i].country);
