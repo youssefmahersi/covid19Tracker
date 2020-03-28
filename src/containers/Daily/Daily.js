@@ -53,23 +53,8 @@ componentDidMount(){
                let newdata = [
                 ...resData
                ]
-                
-               
-               let permut = false;
-               do{
-                let z= null;
-                 for(let i =0; i>newdata.length-1;i++){
-                   if(newdata[i+1].todayCases >newdata[i].todayCases ){
-                     z = newdata[i];
-                     newdata[i] = newdata[i+1];
-                     newdata[i+1] = z;
-                     permut = true
-                   }
-                 }
-               }
-               while(!permut);
                console.log(newdata)
-               let a= newdata.slice(0,5);
+               let a= newdata.slice(0,6);
                
               for(let i=0; i<a.length;i++){
                 updatedState.labels.push(a[i].country);
