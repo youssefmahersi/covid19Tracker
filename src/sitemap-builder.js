@@ -5,6 +5,6 @@ const Sitemap = require('../').default;
  
 (
     new Sitemap(router)
-        .build('http://my-site.ru')
+        .build('https://anal-virus.info')
         .save('./sitemap.xml')
 );
