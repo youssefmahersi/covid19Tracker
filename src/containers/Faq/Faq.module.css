@@ -1,0 +1,37 @@
+.Container{
+    width: 60%;
+    display: block;
+    margin:10px auto;
+    text-align: center;
+    padding : 10px;
+}
+.Container h1{
+    color: #a47a0f;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 38px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.Container select{
+    padding: 10px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    border-bottom: #a47a0f 2px solid;
+}
+.Container select:hover,
+.Container select:focus{
+    border-color:#00c2a4;
+}
+@media screen and (max-width: 500px) {
+    .Container{
+        width: 100%;
+    }
+    .Container h1{
+        color: #a47a0f;
+        font-size: 25px;
+        font-weight: 150;
+        line-height: 19px;
+    }
+}

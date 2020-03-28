@@ -14,7 +14,7 @@ const ToolBar = (props)=>(
         height="30"
         className="d-inline-block align-top"
       />{' '}
-      A-corona
+      A-virus
     </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">

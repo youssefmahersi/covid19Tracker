@@ -4,36 +4,42 @@ import Chart from '../../components/Chart/Chart';
 import Spinner from "../../components/Spinner/Spinner";
 class Daily extends Component{
     state={
-        title: "Daily Results",
+        title: "Most infected countries today",
           chartData:{
             labels: null,
             datasets: [{ 
                 data: null,
-                label: "Confirmed",
-                borderColor: "#3e95cd",
+                label: "todayCases",
+                backgroundColor: "#3e95cd",borderColor: "#000000",
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                hoverBorderColor: "#000000",
                 fill: false
               }, { 
                 data: null,
-                label: "Recovered",
-                borderColor: "#3cba9f",
+                label: "todayDeaths",
+                backgroundColor: "#c45850",borderColor: "#000000",
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                hoverBorderColor: "#000000",
                 fill: false
               }
             ]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
             ,loading : false
       }
 componentDidMount(){
   this.setState({loading : true});
-            fetch("https://covid19.mathdro.id/api/daily",{
+            fetch("https://corona.lmao.ninja/countries",{
                 method :"GET"
             }
             ).then(res =>{
@@ -44,12 +50,31 @@ componentDidMount(){
               let updatedState = {
                 ...this.state.chartData
                }
-               let a = resData.splice(resData.length-31,resData.length);
+               let newdata = [
+                ...resData
+               ]
+                
+               
+               let permut = false;
+               do{
+                let z= null;
+                 for(let i =0; i<newdata.length-1;i++){
+                   if(newdata[i+1].todayCases >newdata[i].todayCases && newdata[i+1].todayDeaths >newdata[i].todayDeaths){
+                     z = newdata[i];
+                     newdata[i] = newdata[i+1];
+                     newdata[i+1] = z;
+                     permut = true
+                   }
+                 }
+               }
+               while(!permut);
+               let a= newdata.slice(0,5);
                console.log(a)
+               
               for(let i=0; i<a.length;i++){
-                updatedState.labels.push(a[i].reportDate.slice(5,a[i].reportDate.length));
-                updatedState.datasets[0].data.push(a[i].deltaConfirmed);
-                updatedState.datasets[1].data.push(a[i].deltaRecovered);
+                updatedState.labels.push(a[i].country);
+                updatedState.datasets[0].data.push(a[i].todayCases);
+                updatedState.datasets[1].data.push(a[i].todayDeaths);
               }
               
             //   resData.map(confirm => dates.push(confirm.reportDateString));
@@ -65,7 +90,7 @@ componentDidMount(){
           return(
 <div className={classes.Container} id="daily">
   {this.state.loading ? <Spinner/> : <Chart width={100}
-  height={50} chartData={this.state.chartData} title={this.state.title} legendPosition="bottom" type="Line"/>}
+  height={50} chartData={this.state.chartData} title={this.state.title} legendPosition="bottom" type="bar"/>}
 
 </div>
 )
